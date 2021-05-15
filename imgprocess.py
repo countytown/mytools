@@ -111,3 +111,10 @@ def expand_one2three_channels(map):
     image = np.concatenate((image, image, image), axis=-1)
     cv2.imshow("3channel",image)
     cv2.waitKey(0)
+    
+deg add_heatmap2img(tensor_1c): # tensor_1c应当是真正的热力图，而非特征图？ 
+        np_1c = tensor_1c.numpy()
+        heatmap = cv2.resize(np_1c, (ori_img.shape[1], ori_img.shape[0]))
+        heatmap = cv2.applyColorMap(np.uint8(255 * heatmap), cv2.COLORMAP_JET)
+        INTENSITY = 0.8
+        img = heatmap * INTENSITY + 0.3*ori_img
