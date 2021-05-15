@@ -104,3 +104,10 @@ for imgfile in os.listdir('img_dir'):
     dtensor_img_3d = tensor_img.unsqueeze(0).cuda()  # 送入模型需要添加一维batch!! [batch,channel,height,width]
     # print(dtensor_img_3d.shape, '3D')
     logit, _ = cnn(dtensor_img_3d)  # 送入模型
+
+def expand_one2three_channels(map):
+    np_onec = map[0][0].numpy()
+    image = np.expand_dims(np_onec, axis=2)
+    image = np.concatenate((image, image, image), axis=-1)
+    cv2.imshow("3channel",image)
+    cv2.waitKey(0)
