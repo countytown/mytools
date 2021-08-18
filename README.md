@@ -12,6 +12,8 @@ find_common_txt.py:
 
 Find txt files accroding to img files by comparing their names.
                     根据txt文件名找出对应的图片文件名
+                    
+                    
 getresolution.py:  
 
 
